@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &186270554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 186270555}
+  - component: {fileID: 186270556}
+  m_Layer: 0
+  m_Name: MatchFinder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &186270555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186270554}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &186270556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186270554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095a14d1ec5e12e429339f6765c8cca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMatches: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81a71bb7f0eb2e46a409ee9e4000e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 1
   width: 7
   height: 10
   tilePrefab: {fileID: 3894788728707013783, guid: b50e17d6e1eba8a45aff8fe719c5eea6, type: 3}
@@ -256,6 +302,7 @@ MonoBehaviour:
   - {fileID: 7942611257158279388, guid: 7f54fc225c0338742a10ba65ceb4bb51, type: 3}
   - {fileID: 121045233871097935, guid: eb7696b83289ae1459865d7658e743fb, type: 3}
   - {fileID: 4018742898794041426, guid: c12adb520f9ca0d4489822be21cdbfd2, type: 3}
+  destroyEffect: {fileID: 2693480233691281941, guid: 31ed8ce8f6f61c64aa316e6748d0839d, type: 3}
 --- !u!4 &1828590168
 Transform:
   m_ObjectHideFlags: 0
@@ -277,3 +324,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 1828590168}
+  - {fileID: 186270555}
