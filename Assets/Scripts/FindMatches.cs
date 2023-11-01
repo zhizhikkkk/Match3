@@ -157,4 +157,42 @@ public class FindMatches : MonoBehaviour
         }
         return dots;
     }
+
+    public void CheckBombs()
+    {
+        if (board.currentDot != null)
+        {
+            if (board.currentDot.isMatched)
+            {
+                board.currentDot.isMatched = false;
+                int typeOfBomb = Random.Range(0, 100);
+                if (typeOfBomb < 50)
+                {
+                    board.currentDot.MakeRowBomb();
+                }
+                else if(typeOfBomb >= 50)
+                {
+                    board.currentDot.MakeColumnBomb();
+                }
+            }
+            else if (board.currentDot.otherDot!=null)
+            {
+                Dot otherDot = board.currentDot.otherDot.GetComponent<Dot>();
+                if (otherDot.isMatched)
+                {
+                    otherDot.isMatched = false;
+
+                }
+                int typeOfBomb = Random.Range(0, 100);
+                if (typeOfBomb < 50)
+                {
+                    otherDot.MakeRowBomb();
+                }
+                else if (typeOfBomb >= 50)
+                {
+                    otherDot.MakeColumnBomb();
+                }
+            }
+        }
+    }
 }

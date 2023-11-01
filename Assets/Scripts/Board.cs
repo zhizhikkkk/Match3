@@ -14,6 +14,7 @@ public class Board : MonoBehaviour
     [SerializeField] private int height;
     [SerializeField] private GameObject tilePrefab;
     [SerializeField] private GameObject[] dots;
+    public Dot currentDot;
     public GameObject destroyEffect;
     public GameObject[,] allDots;
     private BackgroundTile[,] allTiles;
@@ -95,6 +96,10 @@ public class Board : MonoBehaviour
     {
         if (allDots[column, row].GetComponent<Dot>().isMatched)
         {
+            if(findMatches.currentMatches.Count==4 || findMatches.currentMatches.Count == 7)
+            {
+                findMatches.CheckBombs();
+            }
             findMatches.currentMatches.Remove(allDots[column, row]);
             GameObject particle = Instantiate(destroyEffect, allDots[column, row].transform.position, Quaternion.identity);
             Destroy(particle, .5f);
@@ -188,6 +193,8 @@ public class Board : MonoBehaviour
             yield return new WaitForSeconds(.5f);
             DestroyMatches();
         }
+        findMatches.currentMatches.Clear();
+        currentDot = null;
         yield return new WaitForSeconds(.5f);
         currentState = GameState.move;
     }

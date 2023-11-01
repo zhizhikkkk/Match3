@@ -15,7 +15,7 @@ public class Dot : MonoBehaviour
 
     private FindMatches findMatches;
     private Board board;
-    private GameObject otherDot;
+    public GameObject otherDot;
     private Vector2 firstTouchPos;
     private Vector2 finalTouchPos;
     private Vector2 tempPos;
@@ -57,11 +57,11 @@ public class Dot : MonoBehaviour
 
     void Update()
     {
-        if (isMatched)
-        {
-            SpriteRenderer mySprite = GetComponent<SpriteRenderer>();
-            mySprite.color = new Color(0f, 0f, 0f, 0.2f);
-        }
+        //if (isMatched)
+        //{
+        //    SpriteRenderer mySprite = GetComponent<SpriteRenderer>();
+        //    mySprite.color = new Color(0f, 0f, 0f, 0.2f);
+        //}
         targetX = column;
         targetY = row;
         if (Mathf.Abs(targetX - transform.position.x) > .1)
@@ -114,13 +114,14 @@ public class Dot : MonoBehaviour
                 column = previousColumn;
 
                 yield return new WaitForSeconds(.5f);
+                board.currentDot = null;
                 board.currentState = GameState.move;
             }
             else
             {
                 board.DestroyMatches();
             }
-            otherDot = null;
+            //otherDot = null;
 
         }
     }
@@ -150,6 +151,7 @@ public class Dot : MonoBehaviour
                 finalTouchPos.x - firstTouchPos.x) * 180 / Mathf.PI;
             MovePieces();
             board.currentState = GameState.wait;
+            board.currentDot = this;
         }
         else
         {
@@ -196,5 +198,18 @@ public class Dot : MonoBehaviour
             row -= 1;
         }
         StartCoroutine(CheckMoveCo());
+    }
+    public void MakeRowBomb()
+    {
+        isRowBomb = true;
+        GameObject arrow = Instantiate(rowArrow, transform.position, Quaternion.identity);
+        arrow.transform.parent = this.transform;
+    }
+
+    public void MakeColumnBomb()
+    {
+        isColumnBomb = true;
+        GameObject arrow = Instantiate(columnArrow, transform.position, Quaternion.identity);
+        arrow.transform.parent = this.transform;
     }
 }
