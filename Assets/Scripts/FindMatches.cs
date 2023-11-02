@@ -131,6 +131,23 @@ public class FindMatches : MonoBehaviour
         }
     }
 
+    public void MatchPiecesOfColor(string color)
+    {
+        for(int i=0;i < board.GetWidth(); i++)
+        {
+            for(int j=0;j< board.GetHeight(); j++)
+            {
+                if (board.allDots[i, j] != null)
+                {
+                    if(board.allDots[i, j].tag == color)
+                    {
+                        board.allDots[i, j].GetComponent<Dot>().isMatched = true;
+                    }
+                }
+            }
+        }
+    }
+
     private List<GameObject> GetColumnPieces(int column)
     {
         List<GameObject> dots = new List<GameObject>();
@@ -165,12 +182,12 @@ public class FindMatches : MonoBehaviour
             if (board.currentDot.isMatched)
             {
                 board.currentDot.isMatched = false;
-                int typeOfBomb = Random.Range(0, 100);
-                if (typeOfBomb < 50)
+                if ((board.currentDot.swipeAngle<=45 && board.currentDot.swipeAngle > -45)
+                  || (board.currentDot.swipeAngle >= 135 || board.currentDot.swipeAngle < -135))
                 {
                     board.currentDot.MakeRowBomb();
                 }
-                else if(typeOfBomb >= 50)
+                else
                 {
                     board.currentDot.MakeColumnBomb();
                 }
@@ -178,17 +195,12 @@ public class FindMatches : MonoBehaviour
             else if (board.currentDot.otherDot!=null)
             {
                 Dot otherDot = board.currentDot.otherDot.GetComponent<Dot>();
-                if (otherDot.isMatched)
-                {
-                    otherDot.isMatched = false;
-
-                }
-                int typeOfBomb = Random.Range(0, 100);
-                if (typeOfBomb < 50)
+                if ((board.currentDot.swipeAngle <= 45 && board.currentDot.swipeAngle > -45)
+                  || (board.currentDot.swipeAngle >= 135 || board.currentDot.swipeAngle < -135))
                 {
                     otherDot.MakeRowBomb();
                 }
-                else if (typeOfBomb >= 50)
+                else
                 {
                     otherDot.MakeColumnBomb();
                 }

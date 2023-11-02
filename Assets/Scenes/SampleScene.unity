@@ -302,6 +302,7 @@ MonoBehaviour:
   - {fileID: 7942611257158279388, guid: 7f54fc225c0338742a10ba65ceb4bb51, type: 3}
   - {fileID: 121045233871097935, guid: eb7696b83289ae1459865d7658e743fb, type: 3}
   - {fileID: 4018742898794041426, guid: c12adb520f9ca0d4489822be21cdbfd2, type: 3}
+  currentDot: {fileID: 0}
   destroyEffect: {fileID: 2693480233691281941, guid: 31ed8ce8f6f61c64aa316e6748d0839d, type: 3}
 --- !u!4 &1828590168
 Transform:
