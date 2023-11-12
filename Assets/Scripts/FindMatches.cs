@@ -9,7 +9,6 @@ public class FindMatches : MonoBehaviour
     private Board board;
     public List<GameObject> currentMatches = new List<GameObject>();
 
-    // Use this for initialization
     void Start()
     {
         board = FindObjectOfType<Board>();
@@ -289,13 +288,10 @@ public class FindMatches : MonoBehaviour
         {
             for (int j = 0; j < board.height; j++)
             {
-                //Check if that piece exists
                 if (board.allDots[i, j] != null)
                 {
-                    //Check the tag on that dot
                     if (board.allDots[i, j].tag == color)
                     {
-                        //Set that dot to be matched
                         board.allDots[i, j].GetComponent<Dot>().isMatched = true;
                     }
                 }
@@ -310,7 +306,6 @@ public class FindMatches : MonoBehaviour
         {
             for (int j = row - 1; j <= row + 1; j++)
             {
-                //Check if the piece is inside the board
                 if (i >= 0 && i < board.width && j >= 0 && j < board.height)
                 {
                     dots.Add(board.allDots[i, j]);
@@ -351,22 +346,16 @@ public class FindMatches : MonoBehaviour
 
     public void CheckBombs()
     {
-        //Did the player move something?
         if (board.currentDot != null)
         {
-            //Is the piece they moved matched?
             if (board.currentDot.isMatched)
             {
-                //make it unmatched
                 board.currentDot.isMatched = false;
-                //Decide what kind of bomb to make
                 /*
                 int typeOfBomb = Random.Range(0, 100);
                 if(typeOfBomb < 50){
-                    //Make a row bomb
                     board.currentDot.MakeRowBomb();
                 }else if(typeOfBomb >= 50){
-                    //Make a column bomb
                     board.currentDot.MakeColumnBomb();
                 }
                 */
@@ -380,26 +369,20 @@ public class FindMatches : MonoBehaviour
                     board.currentDot.MakeColumnBomb();
                 }
             }
-            //Is the other piece matched?
             else if (board.currentDot.otherDot != null)
             {
                 Dot otherDot = board.currentDot.otherDot.GetComponent<Dot>();
-                //Is the other Dot matched?
                 if (otherDot.isMatched)
                 {
-                    //Make it unmatched
                     otherDot.isMatched = false;
                     /*
-                    //Decide what kind of bomb to make
                     int typeOfBomb = Random.Range(0, 100);
                     if (typeOfBomb < 50)
                     {
-                        //Make a row bomb
                         otherDot.MakeRowBomb();
                     }
                     else if (typeOfBomb >= 50)
                     {
-                        //Make a column bomb
                         otherDot.MakeColumnBomb();
                     }
                     */

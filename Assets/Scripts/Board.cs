@@ -45,7 +45,6 @@ public class Board : MonoBehaviour
 
 
 
-    // Use this for initialization
     void Start()
     {
         breakableTiles = new BackgroundTile[width, height];
@@ -196,8 +195,6 @@ public class Board : MonoBehaviour
         {
             if (ColumnOrRow())
             {
-                //Make a color bomb
-                //is the current dot matched?
                 if (currentDot != null)
                 {
                     if (currentDot.isMatched)
@@ -227,8 +224,6 @@ public class Board : MonoBehaviour
             }
             else
             {
-                //Make a adjacent bomb
-                //is the current dot matched?
                 if (currentDot != null)
                 {
                     if (currentDot.isMatched)
@@ -263,7 +258,6 @@ public class Board : MonoBehaviour
     {
         if (allDots[column, row].GetComponent<Dot>().isMatched)
         {
-            //How many elements are in the matched pieces list from findmatches?
             if (findMatches.currentMatches.Count >= 4)
             {
                 CheckToMakeBombs();
@@ -310,20 +304,14 @@ public class Board : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-                //if the current spot isn't blank and is empty. . . 
                 if (!blankSpaces[i, j] && allDots[i, j] == null)
                 {
-                    //loop from the space above to the top of the column
                     for (int k = j + 1; k < height; k++)
                     {
-                        //if a dot is found. . .
                         if (allDots[i, k] != null)
                         {
-                            //move that dot to this empty space
                             allDots[i, k].GetComponent<Dot>().row = j;
-                            //set that spot to be null
                             allDots[i, k] = null;
-                            //break out of the loop;
                             break;
                         }
                     }
@@ -407,7 +395,7 @@ public class Board : MonoBehaviour
         {
             yield return new WaitForSeconds(.5f);
             DestroyMatches();
-            hasNewMatches = CheckForNewMatches(); // Проверяем еще раз после уничтожения матчей
+            hasNewMatches = CheckForNewMatches(); 
         }
         findMatches.currentMatches.Clear();
         currentDot = null;

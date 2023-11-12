@@ -36,8 +36,6 @@ public class Dot : MonoBehaviour
     public GameObject columnArrow;
     public GameObject colorBomb;
 
-
-    // Use this for initialization
     void Start()
     {
 
@@ -49,17 +47,10 @@ public class Dot : MonoBehaviour
         hintManager = FindObjectOfType<HintManager>();
         board = FindObjectOfType<Board>();
         findMatches = FindObjectOfType<FindMatches>();
-        //targetX = (int)transform.position.x;
-        //targetY = (int)transform.position.y;
-        //row = targetY;
-        //column = targetX;
-        //previousRow = row;
-        //previousColumn = column;
 
     }
 
 
-    //This is for testing and Debug only.
     private void OnMouseOver()
     {
         
@@ -71,8 +62,6 @@ public class Dot : MonoBehaviour
         }
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         /*
@@ -87,7 +76,6 @@ public class Dot : MonoBehaviour
         targetY = row;
         if (Mathf.Abs(targetX - transform.position.x) > .1)
         {
-            //Move Towards the target
             tempPosition = new Vector2(targetX, transform.position.y);
             transform.position = Vector2.Lerp(transform.position, tempPosition, .6f);
             if (board.allDots[column, row] != this.gameObject)
@@ -100,14 +88,12 @@ public class Dot : MonoBehaviour
         }
         else
         {
-            //Directly set the position
             tempPosition = new Vector2(targetX, transform.position.y);
             transform.position = tempPosition;
 
         }
         if (Mathf.Abs(targetY - transform.position.y) > .1)
         {
-            //Move Towards the target
             tempPosition = new Vector2(transform.position.x, targetY);
             transform.position = Vector2.Lerp(transform.position, tempPosition, .6f);
             if (board.allDots[column, row] != this.gameObject)
@@ -119,7 +105,6 @@ public class Dot : MonoBehaviour
         }
         else
         {
-            //Directly set the position
             tempPosition = new Vector2(transform.position.x, targetY);
             transform.position = tempPosition;
 
@@ -130,13 +115,11 @@ public class Dot : MonoBehaviour
     {
         if (isColorBomb)
         {
-            //This piece is a color bomb, and the other piece is the color to destroy
             findMatches.MatchPiecesOfColor(otherDot.tag);
             isMatched = true;
         }
         else if (otherDot.GetComponent<Dot>().isColorBomb)
         {
-            //The other piece is a color bomb, and this piece has the color to destroy
             findMatches.MatchPiecesOfColor(this.gameObject.tag);
             otherDot.GetComponent<Dot>().isMatched = true;
         }
