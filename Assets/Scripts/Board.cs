@@ -42,11 +42,15 @@ public class Board : MonoBehaviour
     public GameObject[,] allDots;
     public Dot currentDot;
     private FindMatches findMatches;
-
-
+    public int basePieceValue=20;
+    private int streakValue = 1;
+    private ScoreManager scoreManager;
+    public float refillDelay = 0.5f;
+    public int[] scoreGoals;
 
     void Start()
     {
+        scoreManager = FindObjectOfType<ScoreManager>();
         breakableTiles = new BackgroundTile[width, height];
         findMatches = FindObjectOfType<FindMatches>();
         blankSpaces = new bool[width, height];
@@ -87,7 +91,8 @@ public class Board : MonoBehaviour
                 if (!blankSpaces[i, j])
                 {
                     Vector2 tempPosition = new Vector2(i, j + offSet);
-                    GameObject backgroundTile = Instantiate(tilePrefab, tempPosition, Quaternion.identity) as GameObject;
+                    Vector2 tilePosition = new Vector2(i, j );
+                    GameObject backgroundTile = Instantiate(tilePrefab, tilePosition, Quaternion.identity) as GameObject;
                     backgroundTile.transform.parent = this.transform;
                     backgroundTile.name = "( " + i + ", " + j + " )";
 
@@ -277,6 +282,7 @@ public class Board : MonoBehaviour
                                               Quaternion.identity);
             Destroy(particle, .5f);
             Destroy(allDots[column, row]);
+            scoreManager.IncreaseScore(basePieceValue * streakValue);
             allDots[column, row] = null;
         }
     }
@@ -319,7 +325,7 @@ public class Board : MonoBehaviour
                 
             }
         }
-        yield return new WaitForSeconds(.4f);
+        yield return new WaitForSeconds(refillDelay*0.5f);
         StartCoroutine(FillBoardCo());
     }
 
@@ -342,7 +348,7 @@ public class Board : MonoBehaviour
             }
             nullCount = 0;
         }
-        yield return new WaitForSeconds(.4f);
+        yield return new WaitForSeconds(refillDelay*0.5f);
         StartCoroutine(FillBoardCo());
     }
 
@@ -356,6 +362,14 @@ public class Board : MonoBehaviour
                 {
                     Vector2 tempPosition = new Vector2(i, j + offSet);
                     int dotToUse = UnityEngine.Random.Range(0, dots.Length);
+
+                    int maxIterations = 0;
+                    while (MatchesAt(i, j, dots[dotToUse]) && maxIterations<100) {
+                        maxIterations++;
+                        dotToUse = UnityEngine.Random.Range(0, dots.Length);
+                    }
+                    maxIterations = 0;
+
                     GameObject piece = Instantiate(dots[dotToUse], tempPosition, Quaternion.identity);
                     allDots[i, j] = piece;
                     piece.GetComponent<Dot>().row = j;
@@ -383,59 +397,82 @@ public class Board : MonoBehaviour
         }
         return false;
     }
-
     private IEnumerator FillBoardCo()
     {
         RefillBoard();
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(refillDelay);
 
-        bool hasNewMatches = CheckForNewMatches();
-
-        while (hasNewMatches || MatchesOnBoard())
+        while (MatchesOnBoard())
         {
-            yield return new WaitForSeconds(.5f);
+            streakValue += 1;
             DestroyMatches();
-            hasNewMatches = CheckForNewMatches(); 
+            yield return new WaitForSeconds(2*refillDelay);
+            
         }
         findMatches.currentMatches.Clear();
         currentDot = null;
-        yield return new WaitForSeconds(.5f);
-        
+        yield return new WaitForSeconds(refillDelay);
+
         if (isDeadLock())
         {
             ShuffleBoard();
-            Debug.Log("DEADLOOOOOCK");
         }
         currentState = GameState.move;
+        streakValue = 1;
 
     }
-    private bool CheckForNewMatches()
-    {
-        for (int i = 0; i < width; i++)
-        {
-            for (int j = 0; j < height; j++)
-            {
-                if (allDots[i, j] != null)
-                {
-                    int dotToUse = Array.IndexOf(dots, allDots[i, j]);
-                    if (dotToUse != -1)
-                    {
-                        int maxIterations = 0;
-                        while (MatchesAt(i, j, dots[dotToUse]) && maxIterations < 100)
-                        {
-                            dotToUse = (dotToUse + 1) % dots.Length;
-                            maxIterations++;
-                        }
-                        if (MatchesAt(i, j, dots[dotToUse]))
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
-        return false;
-    }
+    //private IEnumerator FillBoardCo()
+    //{
+    //    RefillBoard();
+    //    yield return new WaitForSeconds(.5f);
+
+    //    bool hasNewMatches = CheckForNewMatches();
+
+    //    while (hasNewMatches || MatchesOnBoard())
+    //    {
+    //        yield return new WaitForSeconds(.5f);
+    //        DestroyMatches();
+    //        hasNewMatches = CheckForNewMatches(); 
+    //    }
+    //    findMatches.currentMatches.Clear();
+    //    currentDot = null;
+    //    yield return new WaitForSeconds(.5f);
+
+    //    if (isDeadLock())
+    //    {
+    //        ShuffleBoard();
+    //        Debug.Log("DEADLOOOOOCK");
+    //    }
+    //    currentState = GameState.move;
+
+    //}
+    //private bool CheckForNewMatches()
+    //{
+    //    for (int i = 0; i < width; i++)
+    //    {
+    //        for (int j = 0; j < height; j++)
+    //        {
+    //            if (allDots[i, j] != null)
+    //            {
+    //                int dotToUse = Array.IndexOf(dots, allDots[i, j]);
+    //                if (dotToUse != -1)
+    //                {
+    //                    int maxIterations = 0;
+    //                    while (MatchesAt(i, j, dots[dotToUse]) && maxIterations < 100)
+    //                    {
+    //                        dotToUse = (dotToUse + 1) % dots.Length;
+    //                        maxIterations++;
+    //                    }
+    //                    if (MatchesAt(i, j, dots[dotToUse]))
+    //                    {
+    //                        return true;
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //    return false;
+    //}
 
     private void SwitchPieces(int column, int row, Vector2 direction)
     {

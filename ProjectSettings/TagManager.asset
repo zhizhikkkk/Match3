@@ -12,6 +12,7 @@ TagManager:
   - PinkDot
   - RedDot
   - YellowDot
+  - Color
   layers:
   - Default
   - TransparentFX
