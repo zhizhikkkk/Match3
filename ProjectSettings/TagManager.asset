@@ -13,6 +13,7 @@ TagManager:
   - RedDot
   - YellowDot
   - Color
+  - BreakableTile
   layers:
   - Default
   - TransparentFX

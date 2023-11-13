@@ -45,11 +45,15 @@ public class Board : MonoBehaviour
     public int basePieceValue=20;
     private int streakValue = 1;
     private ScoreManager scoreManager;
+    private SoundManager soundManager;
+    private GoalManager goalManager;
     public float refillDelay = 0.5f;
     public int[] scoreGoals;
 
     void Start()
     {
+        goalManager = FindObjectOfType<GoalManager>();
+        soundManager = FindObjectOfType<SoundManager>();
         scoreManager = FindObjectOfType<ScoreManager>();
         breakableTiles = new BackgroundTile[width, height];
         findMatches = FindObjectOfType<FindMatches>();
@@ -275,6 +279,19 @@ public class Board : MonoBehaviour
                 {
                     breakableTiles[column, row] = null;
                 }
+            }
+
+            if (goalManager != null)
+            {
+                goalManager.CompareGoal(allDots[column, row].tag.ToString());
+                goalManager.UpdateGoals();
+            }
+
+
+
+            if (soundManager != null)
+            {
+                soundManager.PlayRandomDestroyNoise();
             }
 
             GameObject particle = Instantiate(destroyParticle,
