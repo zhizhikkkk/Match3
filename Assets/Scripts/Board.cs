@@ -29,29 +29,59 @@ public class TileType
 
 public class Board : MonoBehaviour
 {
-
+    [Header("Scriptable Object Stuff")]
+    public World world;
+    public int level;
 
     public GameState currentState = GameState.move;
+    [Header("BoardDimensions")]
     public int width;
     public int height;
     public int offSet;
+
+    [Header("Prefabs")]
     public GameObject tilePrefab;
     public GameObject breakableTilePrefab;
     public GameObject[] dots;
     public GameObject destroyParticle;
+
+    [Header("Layout")]
     public TileType[] boardLayout;
     private bool[,] blankSpaces;
     private BackgroundTile[,] breakableTiles;
     public GameObject[,] allDots;
     public Dot currentDot;
     private FindMatches findMatches;
-    public int basePieceValue=20;
+    public int basePieceValue = 20;
     private int streakValue = 1;
     private ScoreManager scoreManager;
     private SoundManager soundManager;
     private GoalManager goalManager;
     public float refillDelay = 0.5f;
     public int[] scoreGoals;
+
+
+    void Awake()
+    {
+        if (PlayerPrefs.HasKey("CurrentLevel"))
+        {
+            level = PlayerPrefs.GetInt("CurrentLevel");
+        }
+        if (world != null)
+        {
+            if (level < world.levels.Length && level >= 0)
+            {
+                if (world.levels[level] != null)
+                {
+                    width = world.levels[level].width;
+                    height = world.levels[level].height;
+                    dots = world.levels[level].dots;
+                    scoreGoals = world.levels[level].scoreGoals;
+                    boardLayout = world.levels[level].boardLayout;
+                }
+            }
+        }
+    }
 
     void Start()
     {
@@ -99,7 +129,7 @@ public class Board : MonoBehaviour
                 if (!blankSpaces[i, j])
                 {
                     Vector2 tempPosition = new Vector2(i, j + offSet);
-                    Vector2 tilePosition = new Vector2(i, j );
+                    Vector2 tilePosition = new Vector2(i, j);
                     GameObject backgroundTile = Instantiate(tilePrefab, tilePosition, Quaternion.identity) as GameObject;
                     backgroundTile.transform.parent = this.transform;
                     backgroundTile.name = "( " + i + ", " + j + " )";
@@ -343,10 +373,10 @@ public class Board : MonoBehaviour
                         }
                     }
                 }
-                
+
             }
         }
-        yield return new WaitForSeconds(refillDelay*0.5f);
+        yield return new WaitForSeconds(refillDelay * 0.5f);
         StartCoroutine(FillBoardCo());
     }
 
@@ -369,7 +399,7 @@ public class Board : MonoBehaviour
             }
             nullCount = 0;
         }
-        yield return new WaitForSeconds(refillDelay*0.5f);
+        yield return new WaitForSeconds(refillDelay * 0.5f);
         StartCoroutine(FillBoardCo());
     }
 
@@ -385,7 +415,8 @@ public class Board : MonoBehaviour
                     int dotToUse = UnityEngine.Random.Range(0, dots.Length);
 
                     int maxIterations = 0;
-                    while (MatchesAt(i, j, dots[dotToUse]) && maxIterations<100) {
+                    while (MatchesAt(i, j, dots[dotToUse]) && maxIterations < 100)
+                    {
                         maxIterations++;
                         dotToUse = UnityEngine.Random.Range(0, dots.Length);
                     }
@@ -427,8 +458,8 @@ public class Board : MonoBehaviour
         {
             streakValue += 1;
             DestroyMatches();
-            yield return new WaitForSeconds(2*refillDelay);
-            
+            yield return new WaitForSeconds(2 * refillDelay);
+
         }
         findMatches.currentMatches.Clear();
         currentDot = null;
@@ -540,7 +571,7 @@ public class Board : MonoBehaviour
         return false;
     }
 
-    public  bool SwitchAndCheck(int column, int row, Vector2 direction)
+    public bool SwitchAndCheck(int column, int row, Vector2 direction)
     {
         SwitchPieces(column, row, direction);
         if (CheckForMatches())
@@ -584,13 +615,13 @@ public class Board : MonoBehaviour
     {
         List<GameObject> newBoard = new List<GameObject>();
 
-        for(int i = 0; i < width; i++)
+        for (int i = 0; i < width; i++)
         {
-            for(int j=0;j < height; j++)
+            for (int j = 0; j < height; j++)
             {
-                if (allDots[i,j]!= null)
+                if (allDots[i, j] != null)
                 {
-                    newBoard.Add(allDots[i,j]);
+                    newBoard.Add(allDots[i, j]);
                 }
             }
         }
@@ -600,10 +631,10 @@ public class Board : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-                if (!blankSpaces[i,j])
+                if (!blankSpaces[i, j])
                 {
                     int pieceToUse = UnityEngine.Random.Range(0, newBoard.Count);
-                    
+
                     int maxIterations = 0;
 
                     while (MatchesAt(i, j, newBoard[pieceToUse]) && maxIterations < 100)

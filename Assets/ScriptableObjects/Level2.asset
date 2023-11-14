@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb7aa3295d3e184899543e03c50b6fd, type: 3}
+  m_Name: Level2
+  m_EditorClassIdentifier: 
+  width: 6
+  height: 8
+  boardLayout:
+  - x: 3
+    y: 3
+    tileKind: 0
+  - x: 3
+    y: 4
+    tileKind: 0
+  dots:
+  - {fileID: 4991868327962189207, guid: d7b9833c0e7796e40a6e5b6c8fe4bc52, type: 3}
+  - {fileID: 1283123254049541142, guid: 17818c83a33007a458f58cd331a1a931, type: 3}
+  - {fileID: 121045233871097935, guid: eb7696b83289ae1459865d7658e743fb, type: 3}
+  - {fileID: 7942611257158279388, guid: 7f54fc225c0338742a10ba65ceb4bb51, type: 3}
+  - {fileID: 2944253594977928474, guid: a349636ebcc9ff7419a1e15959952ee3, type: 3}
+  scoreGoals: e803000088130000581b0000
+  endGameRequiremenets:
+    gameType: 1
+    counterValue: 100
+  levelGoals:
+  - numberNeeded: 2
+    numberCollected: 0
+    goalSprite: {fileID: 21300000, guid: b57e544f57cb2094089faf70cf7eeebb, type: 3}
+    matchValue: BreakableTile
+  - numberNeeded: 3
+    numberCollected: 0
+    goalSprite: {fileID: 21300000, guid: cacd8455b176cf045834ca0d71681ea7, type: 3}
+    matchValue: BlueDot

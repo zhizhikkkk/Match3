@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 
@@ -18,13 +19,38 @@ public class GoalManager : MonoBehaviour
     public GameObject goalPrefab;
     public GameObject goalIntroParent;
     public GameObject goalGameParent;
+    private Board board;
     private EndGameManager endGameManager;
 
     void Start()
     {
+        board = FindObjectOfType<Board>();
         endGameManager = FindObjectOfType<EndGameManager>();
+        GetGoals();
         SetUpGoals();
     }
+
+    void GetGoals()
+    {
+        if (board != null)
+        {
+            if (board.level < board.world.levels.Length && board.level >= 0)
+            {
+                if (board.world != null)
+                {
+                    if (board.world.levels[board.level] != null)
+                    {
+                        levelGoals = board.world.levels[board.level].levelGoals;
+                        for(int i=0; i < levelGoals.Length; i++)
+                        {
+                            levelGoals[i].numberCollected = 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     void SetUpGoals()
     {
         for (int i = 0; i < levelGoals.Length; i++)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Collections.LowLevel.Unsafe;
 
 public enum GameType
 {
@@ -34,7 +35,22 @@ public class EndGameManager : MonoBehaviour
     {
         fadePanelController = FindObjectOfType<FadePanelController>();
         board = FindObjectOfType<Board>();
+        SetGameType();
         SetUpGame();
+    }
+
+    void SetGameType()
+    {
+        if (board.world != null)
+        {
+            if (board.level < board.world.levels.Length && board.level >= 0)
+            {
+                if (board.world.levels[board.level] != null)
+                {
+                    requiremenets = board.world.levels[board.level].endGameRequiremenets;
+                }
+            }
+        }
     }
 
     void SetUpGame()

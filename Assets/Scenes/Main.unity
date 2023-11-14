@@ -1924,7 +1924,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1106739334}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1584533458}
+        m_TargetAssemblyTypeName: BackToSplash, Assembly-CSharp
+        m_MethodName: OK
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1106739334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2045,7 +2057,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1108123782}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1584533458}
+        m_TargetAssemblyTypeName: BackToSplash, Assembly-CSharp
+        m_MethodName: OK
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1108123782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2909,8 +2933,8 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
 --- !u!114 &1498614678
 MonoBehaviour:
@@ -2979,6 +3003,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1584533456}
   - component: {fileID: 1584533457}
+  - component: {fileID: 1584533458}
   m_Layer: 0
   m_Name: EndGameManager
   m_TagString: Untagged
@@ -3022,6 +3047,19 @@ MonoBehaviour:
     gameType: 0
     counterValue: 100
   currentCounterValue: 0
+--- !u!114 &1584533458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584533455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25d22a70898c444439b3af713fb49d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Splash
 --- !u!1 &1589189226
 GameObject:
   m_ObjectHideFlags: 0
@@ -3265,8 +3303,8 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
 --- !u!1 &1828590166
 GameObject:
@@ -3298,6 +3336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81a71bb7f0eb2e46a409ee9e4000e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  world: {fileID: 11400000, guid: acf334e3a5ed5414d85f46eead1f798d, type: 2}
+  level: 2
   currentState: 1
   width: 6
   height: 8
@@ -3312,28 +3352,7 @@ MonoBehaviour:
   - {fileID: 8676502924649487910, guid: 0c9a683f394066246b1cb56d3551898b, type: 3}
   - {fileID: 7942611257158279388, guid: 7f54fc225c0338742a10ba65ceb4bb51, type: 3}
   destroyParticle: {fileID: 2693480233691281941, guid: 31ed8ce8f6f61c64aa316e6748d0839d, type: 3}
-  boardLayout:
-  - x: 0
-    y: 0
-    tileKind: 1
-  - x: 0
-    y: 7
-    tileKind: 1
-  - x: 5
-    y: 7
-    tileKind: 1
-  - x: 3
-    y: 3
-    tileKind: 0
-  - x: 3
-    y: 4
-    tileKind: 0
-  - x: 3
-    y: 5
-    tileKind: 0
-  - x: 3
-    y: 2
-    tileKind: 0
+  boardLayout: []
   currentDot: {fileID: 0}
   basePieceValue: 20
   refillDelay: 0.5
