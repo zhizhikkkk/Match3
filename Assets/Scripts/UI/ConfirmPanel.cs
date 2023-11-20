@@ -7,20 +7,47 @@ using UnityEngine.SceneManagement;
 
 public class ConfirmPanel : MonoBehaviour
 {
+    [Header("Level Information")]
     public string levelToLoad;
-    public Image[] stars;
     public int level;
+    private GameData gameData;
+    private int starsActive;
+    private int highScore;
 
-    void Start()
+    [Header("UI Stuff")]
+    public Image[] stars;
+    public TextMeshProUGUI highScoreText;
+    public TextMeshProUGUI starText;
+    
+   
+    void OnEnable()
     {
+        gameData = FindObjectOfType<GameData> ();
+        LoadData();
         ActivateStars();
+        SetText();
+    }
+
+    void LoadData()
+    {
+        if (gameData != null)
+        {
+            starsActive = gameData.saveData.stars[level - 1];
+            highScore = gameData.saveData.highScores[level - 1];
+        }
+    }
+
+    void SetText()
+    {
+        highScoreText.text = "" + highScore;
+        starText.text = "" + starsActive + "/3";    
     }
 
     void ActivateStars()
     {
-        for (int i = 0; i < stars.Length; i++)
+        for (int i = 0; i < starsActive; i++)
         {
-            stars[i].enabled = false;
+            stars[i].enabled = true;
         }
     }
 

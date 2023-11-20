@@ -26,10 +26,6 @@ MonoBehaviour:
     counterValue: 60
   levelGoals:
   - numberNeeded: 5
-    numberCollected: 0
+    numberCollected: 6
     goalSprite: {fileID: 21300000, guid: cacd8455b176cf045834ca0d71681ea7, type: 3}
     matchValue: BlueDot
-  - numberNeeded: 5
-    numberCollected: 0
-    goalSprite: {fileID: 21300000, guid: cacd8455b176cf045834ca0d71681ea7, type: 3}
-    matchValue: RedDot
