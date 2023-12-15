@@ -25,7 +25,7 @@ MonoBehaviour:
     gameType: 0
     counterValue: 60
   levelGoals:
-  - numberNeeded: 5
-    numberCollected: 6
+  - numberNeeded: 100
+    numberCollected: 51
     goalSprite: {fileID: 21300000, guid: cacd8455b176cf045834ca0d71681ea7, type: 3}
     matchValue: BlueDot

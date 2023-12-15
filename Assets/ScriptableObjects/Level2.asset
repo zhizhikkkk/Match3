@@ -17,10 +17,10 @@ MonoBehaviour:
   boardLayout:
   - x: 3
     y: 3
-    tileKind: 0
+    tileKind: 3
   - x: 3
     y: 4
-    tileKind: 0
+    tileKind: 3
   dots:
   - {fileID: 4991868327962189207, guid: d7b9833c0e7796e40a6e5b6c8fe4bc52, type: 3}
   - {fileID: 1283123254049541142, guid: 17818c83a33007a458f58cd331a1a931, type: 3}
@@ -37,6 +37,6 @@ MonoBehaviour:
     goalSprite: {fileID: 21300000, guid: b57e544f57cb2094089faf70cf7eeebb, type: 3}
     matchValue: BreakableTile
   - numberNeeded: 3
-    numberCollected: 6
+    numberCollected: 0
     goalSprite: {fileID: 21300000, guid: cacd8455b176cf045834ca0d71681ea7, type: 3}
     matchValue: PinkDot

@@ -14,6 +14,10 @@ TagManager:
   - YellowDot
   - Color
   - BreakableTile
+  - Board
+  - ConcreteTile
+  - ChocolateTile
+  - LockTile
   layers:
   - Default
   - TransparentFX
@@ -50,4 +54,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Markers
+    uniqueID: 133476663
     locked: 0

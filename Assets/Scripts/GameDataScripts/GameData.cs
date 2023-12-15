@@ -42,7 +42,6 @@ public class GameData : MonoBehaviour
         data = saveData;
         formatter.Serialize(file, data);
         file.Close();
-        Debug.Log("Saved");
     }
 
     public void Load()
@@ -55,6 +54,23 @@ public class GameData : MonoBehaviour
             file.Close();
             Debug.Log("Loaded");
         }
+        else
+        {
+            saveData = new SaveData();
+            saveData.isActive = new bool[100];
+            saveData.stars = new int[100];
+            saveData.highScores = new int[100];
+            saveData.isActive [0] = true;
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        Save();
+    }
+    private void OnApplicationPause()
+    {
+        Save();
     }
 
     private void OnDisable()

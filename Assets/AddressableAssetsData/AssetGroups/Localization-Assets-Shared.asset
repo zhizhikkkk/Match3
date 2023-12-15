@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Shared
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-Assets-Shared
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 517c63f3e8545d54f9dc3964c20c5459
+  m_SerializeEntries:
+  - m_GUID: e64c2fc779115e248a657970f3e80e0b
+    m_Address: Assets/Localization/Tables/LevelSelectBanner Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c1157076b1727624b868cc45198657d2
+    m_Address: Assets/Localization/Tables/HomeButton Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee96f54a9b5a73b49919e3f973c573db
+    m_Address: Assets/Localization/Tables/GoalsText Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61fdead72d1208f4d8411a9d1fa9f420
+    m_Address: Assets/Localization/Tables/TryAgainBtn Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 75ea985c3b5baff428ab6bcbb8e043b6
+    m_Address: Assets/Localization/Tables/YouWinTxt Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: a8f295978e7895c43a026927ed366b81, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: ecef54cef2a2df54dbe419d5dd1a206f, type: 2}
+    - {fileID: 11400000, guid: 8bed3e3d64e20e549bf3d1166d2c4718, type: 2}

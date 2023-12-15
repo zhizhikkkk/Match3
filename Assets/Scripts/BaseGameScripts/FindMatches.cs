@@ -84,16 +84,19 @@ public class FindMatches : MonoBehaviour
         if (dot1.isRowBomb)
         {
             currentDots.AddRange(GetRowPieces( dot1.row));
+            board.BombRow(dot1.row);
         }
 
         if (dot2.isRowBomb)
         {
             currentDots.AddRange(GetRowPieces( dot2.row));
+            board.BombRow(dot2.row);
         }
 
         if (dot3.isRowBomb)
         {
             currentDots.AddRange(GetRowPieces( dot3.row));
+            board.BombRow(dot3.row);
         }
         return currentDots.Distinct().ToList();
     }
@@ -123,16 +126,19 @@ public class FindMatches : MonoBehaviour
         if (dot1.isColumnBomb)
         {
             currentDots.AddRange(GetColumnPieces(dot1.column));
+            board.BombColumn(dot1.column);
         }
 
         if (dot2.isColumnBomb)
         {
             currentDots.AddRange(GetColumnPieces(dot2.column));
+            board.BombColumn(dot2.column);
         }
 
         if (dot3.isColumnBomb)
         {
             currentDots.AddRange(GetColumnPieces(dot3.column));
+            board.BombColumn(dot3.column);
         }
         return currentDots.Distinct().ToList();
     }

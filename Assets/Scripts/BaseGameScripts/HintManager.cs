@@ -22,7 +22,6 @@ public class HintManager : MonoBehaviour
         hintDelaySeconds -= Time.deltaTime;
         if (hintDelaySeconds <= 0 && currentHint == null)
         {
-            Debug.Log("11111111");
             MarkHint();
             hintDelaySeconds = hintDelay;
         }
