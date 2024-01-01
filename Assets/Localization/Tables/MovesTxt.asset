@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: MovesTxt
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: 1b6799e53ed0cde4e87d1d12e4aa7dfe, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: 4877f97246a7f2740949525a26a3694b, type: 2}
+  - {fileID: 11400000, guid: 0ef4d784c66595d4b8f7a75e6c78ae45, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []

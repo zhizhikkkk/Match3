@@ -17,26 +17,32 @@ MonoBehaviour:
   boardLayout:
   - x: 3
     y: 3
-    tileKind: 3
+    tileKind: 4
   - x: 3
     y: 4
-    tileKind: 3
+    tileKind: 4
+  - x: 2
+    y: 3
+    tileKind: 2
+  - x: 2
+    y: 4
+    tileKind: 2
   dots:
   - {fileID: 4991868327962189207, guid: d7b9833c0e7796e40a6e5b6c8fe4bc52, type: 3}
   - {fileID: 1283123254049541142, guid: 17818c83a33007a458f58cd331a1a931, type: 3}
   - {fileID: 121045233871097935, guid: eb7696b83289ae1459865d7658e743fb, type: 3}
   - {fileID: 7942611257158279388, guid: 7f54fc225c0338742a10ba65ceb4bb51, type: 3}
   - {fileID: 2944253594977928474, guid: a349636ebcc9ff7419a1e15959952ee3, type: 3}
-  scoreGoals: e803000088130000581b0000
+  scoreGoals: 96000000c2010000ee020000
   endGameRequiremenets:
     gameType: 1
     counterValue: 100
   levelGoals:
   - numberNeeded: 2
-    numberCollected: 2
-    goalSprite: {fileID: 21300000, guid: b57e544f57cb2094089faf70cf7eeebb, type: 3}
-    matchValue: BreakableTile
-  - numberNeeded: 3
     numberCollected: 0
-    goalSprite: {fileID: 21300000, guid: cacd8455b176cf045834ca0d71681ea7, type: 3}
-    matchValue: PinkDot
+    goalSprite: {fileID: 21300000, guid: 15c3ac0461062d248ac5d8c12a34f245, type: 3}
+    matchValue: ChocolateTile
+  - numberNeeded: 2
+    numberCollected: 0
+    goalSprite: {fileID: 21300000, guid: 9873b4d9750986743b6b374e420a89d7, type: 3}
+    matchValue: LockTile

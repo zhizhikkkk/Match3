@@ -42,6 +42,16 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f71af95a701012e44b5f846c8ee7458c
+    m_Address: Assets/Localization/Tables/TimeTxt Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b6799e53ed0cde4e87d1d12e4aa7dfe
+    m_Address: Assets/Localization/Tables/MovesTxt Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: a8f295978e7895c43a026927ed366b81, type: 2}
   m_SchemaSet:
